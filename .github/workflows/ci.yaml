@@ -26,7 +26,7 @@ jobs:
         run: mdbook build
 
       - name: Setup Node.js (required to install Vercel CLI)
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
 
       - name: Install Vercel CLI
         run: npm install --global vercel
@@ -35,4 +35,4 @@ jobs:
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
 
       - name: Deploy to Vercel
-        run: vercel book --prod --token=${{ secrets.VERCEL_TOKEN }}
+        run: vercel --prod --yes --cwd book --token=${{ secrets.VERCEL_TOKEN }}
